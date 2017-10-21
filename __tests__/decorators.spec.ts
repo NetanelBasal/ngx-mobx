@@ -1,4 +1,4 @@
-import { Cleaner, autorun } from '../src/ngx-decorators';
+import { Cleaner, autorun } from '../src/ngx-mobx.decorators';
 import { observable, computed } from 'mobx';
 
 const META_DATA_KEY = '@@__disposers__@@';
