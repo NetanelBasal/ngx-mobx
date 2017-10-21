@@ -36,7 +36,7 @@ export class TodosPageComponent {
 
  - ~~Cleaner~~
  - ~~autorun~~
- - fromMobx
+ - fromMobx (RxJS bridge)
 
  
 License
