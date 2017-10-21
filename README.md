@@ -12,7 +12,21 @@ yarn add ngx-mobx
 ```
 
 ## Usage
-Coming soon
+
+```ts
+@cleaner
+@Component({
+  selector: 'todos',
+  template: `...`
+})
+export class TodosPageComponent {
+
+  @autorun
+  ngOnInit() {
+    this.todos = this.todosStore.todos;
+  }
+}
+```
 
 ### Roadmap
 
