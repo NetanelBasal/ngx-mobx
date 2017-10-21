@@ -14,7 +14,9 @@ yarn add ngx-mobx
 ## Usage
 
 ```ts
-@cleaner
+import { Cleaner, autorun } from 'ngx-mobx';
+
+@Cleaner
 @Component({
   selector: 'todos',
   template: `...`
