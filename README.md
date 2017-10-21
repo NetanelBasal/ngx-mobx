@@ -27,6 +27,8 @@ export class TodosPageComponent {
   ngOnInit() {
     this.todos = this.todosStore.todos;
   }
+
+  ngOnDestroy() {}
 }
 ```
 
