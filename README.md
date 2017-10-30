@@ -13,6 +13,42 @@ yarn add ngx-mobx
 
 ## Usage
 
+- `fromMobx` - RxJS bridge from Mobx `computed` function
+```ts
+class TodosStore {
+  @observable todos: Todo[] = [new Todo('One')];
+  
+  @action addTodo(todo: Todo) {
+    this.todos = [...this.todos, todo];
+  }
+}
+
+@Component({
+  selector: 'app-todos-page',
+  template: `
+   <button (click)="addTodo()">Add todo</button> 
+   <app-todos [todos]="todos | async"   
+              (complete)="complete($event)">
+    </app-todos>
+  `
+})
+export class TodosPageComponent {
+  todos : Observable<Todo[]>;
+
+  constructor( private _todosStore: TodosStore ) {}
+  
+  ngOnInit() {
+    this.todos = fromMobx(() => this._todosStore.todos);
+  }
+
+  addTodo() {
+    this._todosStore.addTodo({ title: `Todo ${makeid()}` });
+  }
+}
+```
+
+- `Cleaner with autorun` - autorun decorator which cleans itself as soon as the component is destroyed
+
 ```ts
 import { Cleaner, autorun } from 'ngx-mobx';
 
@@ -32,13 +68,6 @@ export class TodosPageComponent {
 }
 ```
 
-### Roadmap
-
- - ~~Cleaner~~
- - ~~autorun~~
- - fromMobx (RxJS bridge)
-
- 
 License
 ----
 

@@ -8,6 +8,7 @@
     "noImplicitAny": false,
     "strict": true,                
     "noUnusedLocals": true,
+    "experimentalDecorators": true,
     "noEmitOnError": true,
     "noUnusedParameters": false, 
     "typeRoots": ["./node_modules/@types"]

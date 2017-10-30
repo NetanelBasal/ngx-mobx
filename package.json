@@ -1,6 +1,6 @@
 {
   "name": "ngx-mobx",
-  "version": "0.0.0-development",
+  "version": "1.1.0",
   "description": "Mobx decorators for Angular Applications",
   "main": "dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -35,6 +35,7 @@
   "author": "Netanel Basal",
   "keywords": [
     "mobx decorators",
+    "rxjs mobx",
     "angular mobx",
     "decorators",
     "autorun decorator",
@@ -47,6 +48,7 @@
     "cz-conventional-changelog": "^2.0.0",
     "jest": "^21.0.1",
     "mobx": "^3.3.1",
+    "rxjs": "^5.5.2",
     "semantic-release": "^7.0.2",
     "semantic-release-cli": "^3.0.3",
     "ts-jest": "^21.0.0",
