@@ -1,6 +1,4 @@
 import { autorun as mautorun } from 'mobx';
-import 'reflect-metadata';
-
 const META_DATA_KEY = '@@__disposers__@@';
 
 /**

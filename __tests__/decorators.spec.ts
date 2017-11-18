@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { Cleaner, autorun } from '../src/ngx-mobx.decorators';
 import { observable, computed } from 'mobx';
 
