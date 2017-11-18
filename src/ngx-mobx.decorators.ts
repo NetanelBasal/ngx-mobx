@@ -23,25 +23,33 @@ export function autorun( target, _, descriptor ) {
   return descriptor;
 }
 
+/**
+ * 
+ * @param fn 
+ */
 function isFunction( fn ) {
   return typeof fn === 'function';
 }
 
+/**
+ * 
+ * @param disposers 
+ */
 function __clean__( disposers ) {
-  disposers.forEach(d => typeof d === 'function' ? d() : false);
+  if(disposers && disposers.length) {
+    disposers.forEach(d => typeof d === 'function' ? d() : false);
+  }
 }
 
 /**
- * 
+ * @deprecated use @CleanAutorun instead
  * @param target 
  */
 export function Cleaner( target ) {
   const original = target.prototype.ngOnDestroy;
 
   if( !isFunction(original) ) {
-    console.warn(
-      `If you want @cleaner to work with AOT, ${target.name} should 
-      implement OnDestroy even if empty`);
+    console.warn(`${target.name} is using @CleanAutorun but does not implement OnDestroy. (required for AOT)`);
   }
 
   target.prototype.ngOnDestroy = function () {
@@ -59,6 +67,7 @@ export function Cleaner( target ) {
 export function CleanAutorun(target) {
    return Cleaner(target);
 }
+
 
 export class MobxCleaner {
   ngOnDestroy() {
