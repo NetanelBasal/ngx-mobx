@@ -3,6 +3,12 @@ import 'reflect-metadata';
 
 const META_DATA_KEY = '@@__disposers__@@';
 
+/**
+ * 
+ * @param target 
+ * @param _ 
+ * @param descriptor 
+ */
 export function autorun( target, _, descriptor ) {
   const originalMethod = descriptor.value;
 
@@ -27,6 +33,10 @@ function __clean__( disposers ) {
   disposers.forEach(d => typeof d === 'function' ? d() : false);
 }
 
+/**
+ * 
+ * @param target 
+ */
 export function Cleaner( target ) {
   const original = target.prototype.ngOnDestroy;
 
@@ -42,6 +52,14 @@ export function Cleaner( target ) {
     Reflect.defineMetadata(META_DATA_KEY, [], target.prototype);
     isFunction(original) && original();
   }
+}
+
+/**
+ * 
+ * @param target 
+ */
+export function CleanAutorun(target) {
+   return Cleaner(target);
 }
 
 export class MobxCleaner {
