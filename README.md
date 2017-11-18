@@ -38,7 +38,8 @@ export class TodosPageComponent {
   constructor( private _todosStore: TodosStore ) {}
   
   ngOnInit() {
-    this.todos = fromMobx(() => this._todosStore.todos);
+                                                        // true by default
+    this.todos = fromMobx(() => this._todosStore.todos, invokeImmediately);
   }
 
   addTodo() {
@@ -47,12 +48,12 @@ export class TodosPageComponent {
 }
 ```
 
-- `Cleaner with autorun` - autorun decorator which cleans itself as soon as the component is destroyed
+- `CleanAutorun with autorun` - autorun decorator which cleans itself as soon as the component is destroyed
 
 ```ts
-import { Cleaner, autorun } from 'ngx-mobx';
+import { CleanAutorun, autorun } from 'ngx-mobx';
 
-@Cleaner
+@CleanAutorun
 @Component({
   selector: 'todos',
   template: `...`
