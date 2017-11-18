@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import { computed } from 'mobx';
-console.log(44)
+
 /**
  * 
  * 

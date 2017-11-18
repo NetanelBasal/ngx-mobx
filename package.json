@@ -15,7 +15,7 @@
     "testRegex": "/__tests__/.*\\.(ts|js)$"
   },
   "scripts": {
-    "build": "rm -rf ./dist && ngc -p tsconfig.json",
+    "build": "rm -rf ./dist && tsc",
     "test": "jest",
     "commit": "git cz",
     "prepublish": "npm run build",
@@ -42,7 +42,6 @@
     "cleaner decorator"
   ],
   "devDependencies": {
-    "@angular/compiler-cli": "^4.4.6",
     "@types/jest": "^20.0.8",
     "@types/reflect-metadata": "0.0.5",
     "commitizen": "^2.9.6",

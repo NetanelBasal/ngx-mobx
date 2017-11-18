@@ -1,7 +1,7 @@
 {
   "compilerOptions": {                  
     "target": "es5",                        
-    "module": "es2015",
+    "module": "commonjs",                     
     "lib": ["dom", "es2016"],
     "declaration": true,
     "outDir": "./dist",      
@@ -17,9 +17,5 @@
     "__tests__",
     "dist",
     "node_modules"
-  ],
-  "angularCompilerOptions": {
-    "genDir": "dist",
-    "skipMetadataEmit" : true
-  }
+  ]
 }
