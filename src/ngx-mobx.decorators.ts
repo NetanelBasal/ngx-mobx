@@ -56,7 +56,7 @@ export function Cleaner( target ) {
     const disposers = Reflect.getOwnMetadata(META_DATA_KEY, target.prototype);
     __clean__(disposers);
     Reflect.defineMetadata(META_DATA_KEY, [], target.prototype);
-    isFunction(original) && original();
+    isFunction(original) && original.apply(this, arguments);
   }
 }
 
@@ -65,7 +65,18 @@ export function Cleaner( target ) {
  * @param target 
  */
 export function CleanAutorun(target) {
-   return Cleaner(target);
+  const original = target.prototype.ngOnDestroy;
+  
+    if( !isFunction(original) ) {
+      console.warn(`${target.name} is using @CleanAutorun but does not implement OnDestroy. (required for AOT)`);
+    }
+  
+    target.prototype.ngOnDestroy = function () {
+      const disposers = Reflect.getOwnMetadata(META_DATA_KEY, target.prototype);
+      __clean__(disposers);
+      Reflect.defineMetadata(META_DATA_KEY, [], target.prototype);
+      isFunction(original) && original.apply(this, arguments);
+    }
 }
 
 
